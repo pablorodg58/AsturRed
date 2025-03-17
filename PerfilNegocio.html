@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Negocio</title>
+    <link href="StyloHtml.css" rel="stylesheet" type="text/css">
+    <style>
+        .business-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .business-header {
+            position: relative;
+            background-color: #e1e8ed;
+        }
+        .cover-photo {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .business-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            position: absolute;
+            bottom: -50px;
+            left: 20px;
+        }
+        .business-info {
+            padding: 60px 20px 20px;
+            text-align: left;
+        }
+        .business-info h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .business-info p {
+            color: gray;
+        }
+        .social-links {
+            margin: 10px 0;
+        }
+        .social-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #009688; 
+        }
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .actions span {
+            cursor: pointer;
+        }
+        .review-container {
+            padding: 20px;
+        }
+        .review {
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+            margin-top: 10px;
+            position: relative;
+        }
+        .review h3 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .review p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .stars {
+            color: gold;
+            font-size: 0.9em;
+        }
+        .button {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+        }
+        .follow-button {
+            background-color: #009688;
+        }
+        .message-button {
+            background-color: #2196F3;
+        }
+        .review-button {
+            background-color: #FFC107; 
+        }
+        .message-box {
+            display: none;
+            margin-top: 10px;
+        }
+        .message-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .active-button {
+            background-color: white;
+            color: #009688; 
+            border: 1px solid #009688;
+        }
+        .star {
+            cursor: pointer;
+            font-size: 1.5em;
+            color: gray;
+        }
+        .star.selected {
+            color: gold; 
+        }
+        .review-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo">
+
+        <div class="nav-links">
+            <a href="#">Inicio</a>
+            <a href="pueblos.html">Pueblos</a>
+            <a href="NegociosLocales.html">Negocios Locales</a>
+            <a href="#">Reseñas</a>
+            <a href="#">Eventos</a>
+            <a href="PerfilUsuario.html">Iniciar Sesión</a>
+        </div>
+    </div>
+
+    <div class="business-container">
+        <div class="business-header">
+            <img src="https://perfectdailygrind.com/es/wp-content/uploads/sites/2/2023/09/Barra-de-cafeteria-de-especialidad.jpg" alt="Foto de encabezado" class="cover-photo">
+            <img src="https://tse1.mm.bing.net/th?id=OIG2.Ios77uLENyGxGGe7ajv9&pid=ImgGn" alt="Foto del negocio" class="business-pic">
+        </div>
+
+        <div class="business-info">
+            <h1>Negocio Desconocido</h1>
+            <p>
+                <strong id="review-count">0 Reseñas</strong>
+                <span id="average-stars" class="stars"></span>
+            </p>
+            <p>Ciudad Desconocida</p>
+            <p class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+            </p>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+
+            <div class="actions">
+                <button id="follow-btn" class="button follow-button" onclick="followUser()">Seguir</button>
+                <button class="button message-button" onclick="showMessageBox()">Enviar Mensaje</button>
+            </div>
+            <div class="message-box" id="message-box">
+                <textarea class="message-input" placeholder="Escribe tu mensaje aquí..."></textarea>
+                <button class="button message-button" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+
+        <div class="review-info" style="padding: 20px;">
+            <h3>Escribe una Reseña</h3>
+            <div id="star-rating">
+                <span class="star" onclick="selectStar(1)">★</span>
+                <span class="star" onclick="selectStar(2)">★</span>
+                <span class="star" onclick="selectStar(3)">★</span>
+                <span class="star" onclick="selectStar(4)">★</span>
+                <span class="star" onclick="selectStar(5)">★</span>
+            </div>
+            <div id="review-input" contenteditable="true" style="border: 1px solid #ccc; padding: 8px; border-radius: 5px; min-height: 100px;" onpaste="handlePaste(event)"></div>
+            <button class="button review-button" onclick="submitReview()">Enviar Reseña</button>
+        </div>
+
+        <div class="review-container" id="review-container"></div>
+    </div>
+    
+    <script>
+        let isFollowing = false;
+        let selectedStars = 0;
+
+        function followUser() {
+            isFollowing = !isFollowing;
+            const followBtn = document.getElementById('follow-btn');
+            if (isFollowing) {
+                followBtn.textContent = "Siguiendo";
+                followBtn.classList.add('active-button');
+            } else {
+                followBtn.textContent = "Seguir";
+                followBtn.classList.remove('active-button');
+            }
+        }
+
+        function showMessageBox() {
+            const messageBox = document.getElementById('message-box');
+            messageBox.style.display = messageBox.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function selectStar(stars) {
+            selectedStars = stars;
+            const starElements = document.querySelectorAll('#star-rating .star');
+            starElements.forEach((star, index) => {
+                star.classList.toggle('selected', index < stars);
+            });
+        }
+
+        function handlePaste(event) {
+            const items = event.clipboardData.items;
+            for (let item of items) {
+                if (item.type.startsWith("image/")) {
+                    const file = item.getAsFile();
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'review-image';
+                        document.getElementById('review-input').appendChild(img);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+        function submitReview() {
+            const review = document.getElementById('review-input').innerText.trim();
+            if (review && selectedStars > 0) {
+                saveReview(review, selectedStars);
+                document.getElementById('review-input').innerText = '';
+                selectedStars = 0;
+                loadReviews();
+            } else {
+                alert('Por favor, escribe una reseña y selecciona una calificación.');
+            }
+        }
+
+        function saveReview(review, stars) {
+            const imageUrl = document.getElementById('review-input').querySelector('img') ? document.getElementById('review-input').querySelector('img').src : '';
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            reviews.push({ review, stars, imageUrl });
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+        }
+
+        function loadReviews() {
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const reviewContainer = document.getElementById('review-container');
+            reviewContainer.innerHTML = '';
+            reviews.forEach(({ review, stars, imageUrl }) => {
+                const newReview = document.createElement('div');
+                newReview.classList.add('review');
+                newReview.innerHTML = `
+                    <h3>Usuario Desconocido <span class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</span></h3>
+                    <p>${review}</p>
+                    ${imageUrl ? `<img src="${imageUrl}" class="review-image" />` : ''}
+                `;
+                reviewContainer.appendChild(newReview);
+            });
+            updateReviewCount();
+        }
+
+        function updateReviewCount() {
+            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const reviewCount = reviews.length;
+            const totalStars = reviews.reduce((acc, { stars }) => acc + stars, 0);
+            const averageStars = totalStars / reviewCount || 0;
+
+            document.getElementById('review-count').textContent = `${reviewCount} Reseñas`;
+
+            const fullStars = Math.floor(averageStars);
+            const halfStar = averageStars % 1 >= 0.5 ? '★' : '';
+            const emptyStars = '☆'.repeat(5 - fullStars - (halfStar ? 1 : 0));
+            document.getElementById('average-stars').innerHTML = `${'★'.repeat(fullStars)}${halfStar}${emptyStars}`;
+        }
+
+        window.onload = loadReviews;
+    </script>
+</body>
+</html>

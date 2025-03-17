@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link href="StyloHtml.css" rel="stylesheet" type="text/css">
+
+    <style>
+       
+        .profile-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            position: relative;
+            background-color: #e1e8ed;
+        }
+        .cover-photo {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            position: absolute;
+            bottom: -50px;
+            left: 20px;
+        }
+        .profile-info {
+            padding: 60px 20px 20px;
+            text-align: left;
+        }
+        .profile-info h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .profile-info p {
+            color: gray;
+        }
+        .actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .actions span {
+            cursor: pointer;
+        }
+        .review-container {
+            padding: 20px;
+        }
+        .review {
+            border-top: 1px solid #ddd;
+            padding: 10px 0;
+            margin-top: 10px;
+        }
+        .review h3 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .review p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .stars {
+            color: gold;
+            font-size: 0.9em;
+        }
+        .button {
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border 0.3s;
+        }
+        .follow-button {
+            background-color: #009688;
+        }
+        .message-button {
+            background-color: #2196F3;
+        }
+        .report-button {
+            background-color: #f44336;
+        }
+        .message-box {
+            display: none;
+            margin-top: 10px;
+        }
+        .message-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .active-button {
+            background-color: white;
+            color: #009688; 
+            border: 1px solid #009688;
+        }
+        .reported-button {
+            background-color: white;
+            color: red;
+            border: 1px solid red; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo">
+  
+        
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="pueblos.html">Pueblos</a>
+            <a href="NegociosLocales.html">Negocios Locales</a>
+            <a href="#">Reseñas</a>
+            <a href="#">Eventos</a>
+            <a href="PerfilUsuario.html">Ver cuenta</a>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://ichef.bbci.co.uk/ace/standard/2048/cpsprodpb/13D33/production/_92330218_pa.jpg" alt="Foto de encabezado" class="cover-photo">
+            <img src="https://img.a.transfermarkt.technology/portrait/big/71292-1694956266.png?lm=1" alt="Foto de perfil" class="profile-pic">
+        </div>
+
+        <div class="profile-info">
+            <h1>Usuario Desconocido</h1>
+            <p><strong id="review-count">2 Reseñas</strong>
+            <p>Ciudad Desconocida</p>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+
+            <div class="actions">
+                <button id="follow-btn" class="button follow-button" onclick="followUser()">Seguir</button>
+                <button class="button message-button" onclick="showMessageBox()">Enviar Mensaje</button>
+                <button id="report-btn" class="button report-button" onclick="reportUser()">Denunciar</button>
+            </div>
+            <div class="message-box" id="message-box">
+                <textarea class="message-input" id="message-input" rows="4" placeholder="Escribe tu mensaje aquí..."></textarea>
+                <button class="button message-button" onclick="sendMessage()">Enviar</button>
+            </div>
+        </div>
+
+        <div class="review-container" id="review-container">
+            <div class="review">
+                <h3>Confitería Manolitos <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span></h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+            </div>
+            <div class="review">
+                <h3>Los Fogones de Martuki <span class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span></h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isFollowing = false;
+        let isReported = false;
+
+        function followUser() {
+            isFollowing = !isFollowing;
+            const followBtn = document.getElementById('follow-btn');
+            if (isFollowing) {
+                followBtn.textContent = "Siguiendo";
+                followBtn.classList.add('active-button');
+            } else {
+                followBtn.textContent = "Seguir";
+                followBtn.classList.remove('active-button');
+            }
+        }
+
+        function showMessageBox() {
+            document.getElementById('message-box').style.display = 'block';
+        }
+
+        function sendMessage() {
+            const message = document.getElementById('message-input').value;
+            document.getElementById('message-input').value = ''; 
+            document.getElementById('message-box').style.display = 'none'; 
+        }
+
+        function reportUser() {
+            isReported = true;
+            const reportBtn = document.getElementById('report-btn');
+            reportBtn.textContent = "Denunciado";
+            reportBtn.classList.add('reported-button');
+        }
+    </script>
+</body>
+</html>

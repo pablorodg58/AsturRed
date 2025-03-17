@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding-top: 70px; /* Espacio para la cabecera fija */
+}
+
+.header {
+    width: 100%;
+    background-color: #006d6d;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center; /* Alinea verticalmente los elementos */
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 50px; /* Controla el tamaño del logo */
+    height: auto;
+}
+.navbar-brand img {
+    height: 40px;
+    width: auto; /* Mantiene las proporciones del logo */
+}
+
+.search-bar {
+    flex: 1;
+    margin: 0 20px;
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px; /* Ajusta el espacio entre los enlaces */
+    align-items: center; /* Alinea los enlaces verticalmente con el logo */
+}
+.navbar-brand img {
+    height: 40px;
+    width: auto; /* Mantiene las proporciones del logo */
+}
+
+.navbar-nav .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #006d6d;
+    color: white;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: #004d4d;
+    color: white;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px; /* Reduce el tamaño de la fuente */
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 20px; /* Ajusta el espacio interior de la cabecera */
+        flex-direction: row; /* Asegura que los elementos estén en línea */
+        justify-content: space-between; /* Mantiene el logo a la izquierda y los enlaces a la derecha */
+    }
+
+    .nav-links {
+        margin-top: 0; /* Elimina el margen superior de los enlaces */
+        gap: 15px; /* Ajusta el espacio entre los enlaces */
+        width: auto; /* Elimina el ancho completo de los enlaces */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Reduce aún más el tamaño de la fuente en pantallas pequeñas */
+    }
+
+    .search-bar {
+        margin: 0 10px; /* Ajusta el margen de la barra de búsqueda */
+    }
+}
+
+footer {
+    background-color: #333; 
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
