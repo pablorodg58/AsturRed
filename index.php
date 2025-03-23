@@ -122,7 +122,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pueblos.html">Pueblos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
                     <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
                     <?php if (isset($_SESSION['username']) || isset($_SESSION['admin_logged_in']) || isset($_SESSION['business_username'])): ?>
                         <?php if (isset($_SESSION['business_username']) && $_SESSION['role'] === 'negocio'): ?>
@@ -156,42 +156,42 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="img/tapia-de-casariego_260.jpg" class="d-block w-100" alt="Tapia de Casariego">
-                <a href="Tapia.html"><div class="carousel-caption d-none d-md-block">
+                <a href="Tapia.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Tapia de Casariego</h5>
                     <p>Donde el mar y la tradición se abrazan</p>
                 </div></a>
             </div>
             <div class="carousel-item">
                 <img src="img/Taramundi_molino.jpg" class="d-block w-100" alt="Taramundi">
-                <a href="Taramundi.html"><div class="carousel-caption d-none d-md-block">
+                <a href="Taramundi.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Taramundi</h5>
                     <p>Donde la naturaleza y la tradición se encuentran</p>
                 </div></a>
             </div>
             <div class="carousel-item">
                 <img src="img/Castropol.jpg" class="d-block w-100" alt="Castropol">
-                <a href="Castropol.html"><div class="carousel-caption d-none d-md-block">
+                <a href="Castropol.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Castropol</h5>
                     <p>Un balcón privilegiado sobre la ría del Eo</p>
                 </div></a>
             </div>
             <div class="carousel-item">
                 <img src="img/vegadeoIndex.jpg" class="d-block w-100" alt="Castropol">
-                <a href="Vegadeo.html"><div class="carousel-caption d-none d-md-block">
+                <a href="Vegadeo.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Vegadeo</h5>
                     <p>Puerta de entrada a la Asturias más auténtica</p>
                 </div></a>
             </div>
             <div class="carousel-item">
                 <img src="img/navia.jpg" class="d-block w-100" alt="Castropol">
-                <a href="Navia.html"><div class="carousel-caption d-none d-md-block">
+                <a href="Navia.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Navia</h5>
                     <p>Donde el Cantábrico besa la tradición</p>
                 </div></a>
             </div>
             <div class="carousel-item">
                 <img src="img/PuertoVega.jpg" class="d-block w-100" alt="Castropol">
-                <a href="Taramundi.html"><div class="carousel-caption d-none d-md-block">
+                <a href="PuertoVega.php"><div class="carousel-caption d-none d-md-block">
                     <h5>Puerto de Vega</h5>
                     <p>El encanto de un pueblo pesquero</p>
                 </div></a>
@@ -280,7 +280,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
                     <div class="card-body">
                         <h5 class="card-title">Museo de la Cuchillería</h5>
                         <p class="card-text">Descubre la historia de la cuchillería en Taramundi: un legado ancestral.</p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
+                        <a href="MuseoCuchilleria.php" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>

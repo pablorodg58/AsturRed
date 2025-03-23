@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>Costa de Navia</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,28 +255,46 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabecera-Navia-a-fondo.jpeg" alt="Castros de Coaña">
+    <h2>Costa de Navia</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Un Mural Bañado por el Cantabrico</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    Navia ofrece una armoniosa combinación de naturaleza, historia y vida marinera, centrada en su ría, su paseo marítimo, el Parque Campoamor y su puerto.
+
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+La Ría de Navia, formada por la desembocadura del río Navia, es un espacio de gran belleza y valor ecológico. Sus aguas tranquilas y su entorno natural la convierten en un lugar ideal para la práctica de deportes acuáticos, como el piragüismo y la vela.
+
+
+
+<br>
+El Paseo Marítimo de Navia, que bordea la ría, es un lugar de encuentro para locales y visitantes. Ofrece vistas panorámicas de la ría, del puerto y del mar Cantábrico. A lo largo del paseo, se encuentran bancos, zonas ajardinadas y establecimientos hosteleros, creando un ambiente agradable para pasear y relajarse.
+
+
     </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/CostaNavia1.jpg" alt="Castros de Coaña">
+      <img src="img/CostaNavia2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    El Parque Campoamor, situado en el centro de Navia, es un espacio verde que ofrece un remanso de paz en el corazón de la villa. Con sus árboles centenarios, sus zonas de juego y sus bancos, el parque es un lugar ideal para pasear, descansar y disfrutar del aire libre.
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
+El Puerto de Navia, situado en la desembocadura de la ría, es un puerto pesquero y deportivo con una larga tradición. El puerto pesquero mantiene su actividad, con la llegada diaria de barcos cargados de pescado fresco. El puerto deportivo, por su parte, ofrece servicios a embarcaciones de recreo y es un punto de partida para excursiones en barco por la costa.
+
+
+<br>
+En conjunto, la ría, el paseo marítimo, el Parque Campoamor y el puerto de Navia conforman un espacio que refleja la identidad marinera de la villa y que ofrece una amplia gama de actividades para disfrutar del entorno natural y de la vida local.
+
+
+
+
+
+
     <div class="text-center my-4">
       <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
     </div>

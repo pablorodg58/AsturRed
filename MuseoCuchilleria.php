@@ -4,11 +4,12 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>Museo de la Cuchillería</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,14 +20,15 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       padding: 0;
       margin: 0;
     }
-    
+
     /* Banner de imagen */
     .image-banner {
       position: relative;
       text-align: center;
-      margin-top: 0; 
+      margin-top: 0;
       padding: 0;
     }
+
     .image-banner img {
       width: 100%;
       height: auto;
@@ -34,44 +36,52 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       max-height: 570px;
       margin-top: 0;
     }
+
     .image-banner h2 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 36px; /* Tamaño por defecto */
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        white-space: nowrap;
-      }
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 36px;
+      /* Tamaño por defecto */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      white-space: nowrap;
+    }
+
     /* Contenedor de negocios locales */
     .business-container {
       background-color: #f8f9fa;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       margin-top: 30px;
     }
+
     .business-container h3 {
       font-size: 1.5rem;
       margin-bottom: 20px;
       text-align: center;
     }
+
     .business-item {
       display: flex;
       align-items: center;
       margin-bottom: 15px;
     }
+
     .business-item img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       margin-right: 10px;
     }
+
     .business-item p {
       margin: 0;
       font-size: 1rem;
     }
+
     /* Contenedor de imágenes en fila */
     .image-container {
       max-width: 600px;
@@ -80,16 +90,19 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       justify-content: flex-start;
       margin-top: 15px;
     }
+
     .image-container img {
       width: 10%;
       height: auto;
       border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       margin-right: 10px;
     }
+
     .image-container img:last-child {
       margin-right: 0;
     }
+
     /* Sección de contenido (ahora visible por defecto) */
     .content {
       padding: 20px;
@@ -98,22 +111,26 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       display: block;
       text-align: justify;
     }
+
     .content img {
       width: 50%;
       height: auto;
       margin-top: 15px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
+
     /* Secciones generales */
     .section {
       margin-top: 30px;
       text-align: center;
     }
+
     .section h2 {
       font-size: 24px;
       margin-bottom: 10px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -122,17 +139,19 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       max-width: 800px;
       margin: 0 auto;
     }
+
     .grid-item {
       background-color: #f4f4f4;
       border-radius: 8px;
       padding: 10px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+
     .grid-item img {
       width: 70%;
       height: auto;
@@ -141,6 +160,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       margin-bottom: 10px;
       border-radius: 5px;
     }
+
     /* Link para mostrar contenido (si decides usarlo) */
     .toggle-link {
       font-weight: bold;
@@ -152,6 +172,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       padding-bottom: 5px;
       transition: color 0.3s ease;
     }
+
     .toggle-link::after {
       content: '';
       position: absolute;
@@ -162,15 +183,18 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       background-color: #006d6d;
       transition: width 0.3s ease;
     }
+
     .toggle-link:hover {
       color: #005757;
     }
+
     .toggle-link:hover::after {
       width: 100%;
     }
+
     /* Estilos base para el botón */
     .btn-custom {
-      background: linear-gradient(45deg,rgb(1, 67, 67),rgb(11, 143, 143));
+      background: linear-gradient(45deg, rgb(1, 67, 67), rgb(11, 143, 143));
       color: white;
       padding: 10px 20px;
       border: none;
@@ -178,6 +202,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       text-decoration: none;
       display: inline-block;
       transition: background 1s ease, transform 1s ease;
+      margin: 10px;
     }
 
     /* Estilos al pasar el cursor */
@@ -186,6 +211,13 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       transform: scale(1.05);
     }
 
+    /* Contenedor de botones en horizontal */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
 
     /* Footer */
     .footer {
@@ -198,22 +230,24 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
       padding: 20px;
       margin-top: 20px;
     }
-    
 
-      @media (max-width: 768px) {
-        .image-banner h2 {
-          font-size: 24px; /* Reducir el tamaño en pantallas pequeñas */
-        }
+
+    @media (max-width: 768px) {
+      .image-banner h2 {
+        font-size: 24px;
+        /* Reducir el tamaño en pantallas pequeñas */
       }
+    }
 
-      @media (max-width: 480px) {
-        .image-banner h2 {
-          font-size: 18px; /* Aún más pequeño en móviles más compactos */
-        }
+    @media (max-width: 480px) {
+      .image-banner h2 {
+        font-size: 18px;
+        /* Aún más pequeño en móviles más compactos */
       }
-
+    }
   </style>
 </head>
+
 <body>
 
   <!-- NavBar -->
@@ -255,33 +289,35 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabecera-Cuchillos.webp" alt="Castros de Coaña">
+    <h2>Museo de la Cuchillería</h2>
   </header>
-  
-   <!-- Contenido principal -->
-   <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <h2 class="text-center">Conoce el Legado Ancestral mas Afilado</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    El Museo de la Cuchillería de Taramundi, situado en la aldea de Pardiñas, en el concejo asturiano de Taramundi, es un espacio dedicado a preservar y difundir la rica tradición cuchillera de la región. Este museo, más que un simple lugar de exhibición, se ha convertido en un símbolo de la identidad y el legado artesanal de Taramundi.
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+La historia del museo está íntimamente ligada a la tradición cuchillera de Taramundi, que se remonta a varios siglos atrás. La habilidad de los artesanos locales en la fabricación de navajas y otros utensilios de corte ha sido transmitida de generación en generación, convirtiendo a Taramundi en un referente en este oficio. El museo nace con la vocación de conservar y mostrar esta tradición, así como de rendir homenaje a los artesanos que han mantenido vivo este legado.
     </p>
-    
+
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/cuchillos1.jpg" alt="Castros de Coaña">
+      <img src="img/cuchillos2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    El museo ofrece a los visitantes un recorrido a través de la historia de la cuchillería de Taramundi, desde sus orígenes hasta la actualidad. Las exposiciones incluyen una amplia variedad de navajas, cuchillos y otras herramientas, así como información sobre las técnicas de fabricación y los materiales utilizados. Además, el museo organiza demostraciones en vivo, donde los visitantes pueden observar de cerca el trabajo de los artesanos y aprender sobre el proceso de elaboración de las navajas.
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
-    <div class="text-center my-4">
-      <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
-    </div>
+El Museo de la Cuchillería de Taramundi no solo es un lugar de interés turístico, sino también un centro de investigación y difusión de la cultura artesanal. El museo colabora con artesanos locales, investigadores y otras instituciones para promover el conocimiento y la valoración de la cuchillería de Taramundi. Su labor contribuye a mantener viva una tradición centenaria y a asegurar su transmisión a las futuras generaciones.    </p>
   </div>
-  <!-- Footer -->
+  <!-- Contenedor de botones en horizontal -->
+  <div class="button-container">
+    <a href="MiNegocio.php?username=Museo de la Cuchillería" class="btn btn-custom">
+      Ver Perfil del Museo
+    </a>
+    <a href="Taramundi.php" class="btn btn-custom">Volver a Taramundi</a>
+  </div>
   <footer class="footer bg-dark text-white py-5">
     <div class="container">
       <div class="row">
@@ -351,4 +387,5 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

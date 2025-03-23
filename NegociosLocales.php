@@ -1,0 +1,234 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negocios Locales</title>
+    <link href="StyloHtml.css" rel="stylesheet" type="text/css">
+
+    <style>
+       
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+        }
+
+        main {
+            text-align: center;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: white; 
+            position: relative; 
+            z-index: 1;
+            padding: 0; 
+            margin: 0;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            height: 35vh; 
+        }
+
+        h1::before {
+            content: '';
+            background-image: url('img/tapia2.jpg'); 
+            background-size: cover;
+            background-position: center; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 35vh; 
+            z-index: -1; 
+        }
+
+        .image-spacing {
+            height: 30px; 
+        }
+
+        .reviews {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 20px; 
+        }
+
+        .review-card {
+            display: flex;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-card img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+        .review-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .review-content h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .review-content p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .stars {
+            color: #f9c80e;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .review-button {
+            background-color: #5a9ca8;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="header"> 
+        <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo">
+
+        <button class="menu-toggle"></button> 
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
+            <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
+            <?php if (isset($_SESSION['username']) || isset($_SESSION['admin_logged_in']) || isset($_SESSION['business_username'])): ?>
+                <?php if (isset($_SESSION['business_username']) && $_SESSION['role'] === 'negocio'): ?>
+                    <!-- Si es un negocio, mostrar "Mi Negocio" -->
+                    <li class="nav-item"><a class="nav-link" href="MiNegocio.php">Mi Negocio</a></li>
+                <?php elseif (isset($_SESSION['business_username']) && $_SESSION['role'] === 'ayuntamiento'): ?>
+                    <!-- Si es un ayuntamiento, mostrar "Crear Evento" -->
+                    <li class="nav-item"><a class="nav-link" href="crear_evento.php">Crear Evento</a></li>
+                <?php elseif (isset($_SESSION['username'])): ?>
+                    <!-- Si es un turista, mostrar "Mi Perfil" -->
+                    <li class="nav-item"><a class="nav-link" href="miPerfil.php">Mi Perfil</a></li>
+                <?php endif; ?>
+                <!-- Mostrar "Cerrar Sesión" para ambos -->
+                <li class="nav-item"><a class="nav-link" href="logout.php">Cerrar Sesión</a></li>
+            <?php else: ?>
+                <!-- Si no ha iniciado sesión, mostrar "Iniciar Sesión" -->
+                <li class="nav-item"><a class="nav-link" href="loginform.php">Iniciar Sesión</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+
+    <main>
+        <h1>Negocios Locales</h1>
+        <div class="image-spacing"></div>
+
+        <section class="reviews">
+            <div class="review-card">
+                <img src="https://tse3.mm.bing.net/th?id=OIG2.7m9xZwVJh6mPHTJxYPqR&pid=ImgGn" alt="Icono de negocio">
+                <div class="review-content">
+                    <h3>Chocopizzas del Norte</h3>
+                    <p>Endulza tu día con nuestras pizzas de chocolate, recién hechas para disfrutar de un sabor 
+                        único en cada bocado. Para amantes de lo dulce y lo diferente</p>
+                    <div class="stars">★★★★★</div>
+                    <button class="review-button">Reseñas</button>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <img src="https://tse2.mm.bing.net/th?id=OIG2.NXDknQrGri4JzLcRKILk&pid=ImgGn" alt="Icono de negocio">
+                <div class="review-content">
+                    <h3>Peine Sereno</h3>
+                    <p>Peines para quienes valoran el arte de la calvicie. Innovación para cada pulgada de tu cuero cabelludo.</p>
+                    <div class="stars">★★☆☆☆</div>
+                    <button class="review-button">Reseñas</button>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <img src="https://tse1.mm.bing.net/th?id=OIG3.1WPNc3uXVWQMCUSUkrUr&pid=ImgGn" alt="Icono de negocio">
+                <div class="review-content">
+                    <h3>Pecescudo</h3>
+                    <p>Protege a tus peces de cualquier aguacero. En Pecescudo, ofrecemos chubasqueros para peces, adaptados a cada tamaño y estilo. 
+                        ¡Para que tus amigos acuáticos no se mojen más de la cuenta!</p>
+                    <div class="stars">★★★★☆</div>
+                    <button class="review-button">Reseñas</button>
+                </div>
+            </div>
+            
+
+            <div class="review-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIG2.eqRdvtQahmlJahLSq5cL&pid=ImgGn" alt="Icono de negocio">
+                <div class="review-content">
+                    <h3>Caracoleando</h3>
+                    <p>Paseamos a tu caracol por el occidente asturiano con dedicación y a su ritmo. ¡Relajación en cada paso!</p>
+                    <div class="stars">★★★★★</div>
+                    <button class="review-button">Reseñas</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-icons">
+            <img src="img/image.png" alt="Icono de Facebook">
+            <img src="img/image (1).png" alt="Icono de Twitter">
+            <img src="img/Escudo_de_Vegadeo.svg" alt="Icono de Instagram">
+            <img src="img/Escudo_de_Tapia_de_Casariego.gif" alt="Icono de YouTube">
+            <img src="img/Escudo_de_Castropol.svg" alt="Icono de LinkedIn">
+        </div>
+        <p>Principado de Asturias</p>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+    </script>
+    <div id="reseñas"></div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("obtener_reseñas.php?negocio_id=ID_DEL_NEGOCIO")
+            .then(response => response.json())
+            .then(data => {
+                let reseñasHTML = "";
+                data.forEach(reseña => {
+                    reseñasHTML += `
+                        <div>
+                            <strong>${reseña.nombre}</strong> - ${"⭐".repeat(reseña.puntuacion)}
+                            <p>${reseña.comentario}</p>
+                            <small>${reseña.fecha}</small>
+                        </div>
+                    `;
+                });
+                document.getElementById("reseñas").innerHTML = reseñasHTML;
+            });
+    });
+    </script>
+    
+</body>
+</html>  

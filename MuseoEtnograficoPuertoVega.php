@@ -1,28 +1,31 @@
 <?php
-session_start();
-
-// Redirigir al formulario de inicio de sesión si no hay sesión activa
-if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !isset($_SESSION['business_username'])) {
-    // No redirigimos, simplemente mostramos "Iniciar Sesión"
-}
+session_start(); // Asegúrate de que esto esté al principio del archivo
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubre la belleza de nuestro pueblo, sus negocios locales, recetas y eventos.">
-    <title>Puerto de Vega</title>
+    <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
+    <title>Museo Etnografico e Historias de la Mar</title>
+    <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
     <link href="StyloHtml.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
+        /* Ajuste para que la navbar fija no oculte el contenido */
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Banner de imagen */
         .image-banner {
             position: relative;
             text-align: center;
-            margin-top: -20px;
+            margin-top: 0;
             padding: 0;
         }
 
@@ -31,6 +34,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             height: auto;
             filter: brightness(0.8);
             max-height: 570px;
+            margin-top: 0;
         }
 
         .image-banner h2 {
@@ -40,9 +44,12 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             transform: translate(-50%, -50%);
             color: white;
             font-size: 36px;
+            /* Tamaño por defecto */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            white-space: nowrap;
         }
 
+        /* Contenedor de negocios locales */
         .business-container {
             background-color: #f8f9fa;
             padding: 20px;
@@ -61,16 +68,6 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            text-decoration: none;
-            /* Quitar subrayado de los enlaces */
-            color: inherit;
-            /* Heredar el color del texto */
-        }
-
-        .business-item:hover {
-            background-color: #e9ecef;
-            /* Cambiar el color de fondo al pasar el ratón */
-            border-radius: 8px;
         }
 
         .business-item img {
@@ -85,6 +82,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             font-size: 1rem;
         }
 
+        /* Contenedor de imágenes en fila */
         .image-container {
             max-width: 600px;
             margin: 0 auto;
@@ -105,24 +103,13 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             margin-right: 0;
         }
 
+        /* Sección de contenido (ahora visible por defecto) */
         .content {
             padding: 20px;
             max-width: 800px;
-            margin: auto;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 1s ease, opacity 1s ease;
-            display: none;
-            text-align: justify; /* Texto justificado */
-        }
-
-        .content.show {
+            margin: 20px auto;
             display: block;
-            opacity: 1;
-        }
-
-        .content p {
-            text-align: justify; /* Asegurar que todos los párrafos estén justificados */
+            text-align: justify;
         }
 
         .content img {
@@ -133,6 +120,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
+        /* Secciones generales */
         .section {
             margin-top: 30px;
             text-align: center;
@@ -173,6 +161,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             border-radius: 5px;
         }
 
+        /* Link para mostrar contenido (si decides usarlo) */
         .toggle-link {
             font-weight: bold;
             font-size: 18px;
@@ -202,41 +191,69 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
         .toggle-link:hover::after {
             width: 100%;
         }
-        .btn-primary {
-            background-color: #005757;
+
+        /* Estilos base para el botón */
+        .btn-custom {
+            background: linear-gradient(45deg, rgb(1, 67, 67), rgb(11, 143, 143));
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 1s ease, transform 1s ease;
         }
 
-        .btn-primary:hover {
-            background-color: #004545;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
+        /* Estilos al pasar el cursor */
+        .btn-custom:hover {
+            background: linear-gradient(45deg, rgb (11, 143, 143), rgb (1, 67, 67));
+            transform: scale(1.05);
         }
 
-        .hidden {
-            display: none;
+
+        /* Footer */
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+
+        @media (max-width: 768px) {
+            .image-banner h2 {
+                font-size: 24px;
+                /* Reducir el tamaño en pantallas pequeñas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-banner h2 {
+                font-size: 18px;
+                /* Aún más pequeño en móviles más compactos */
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container-fluid">
+    <!-- NavBar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <!-- Logo en el navbar-brand -->
             <a class="navbar-brand" href="#">
-                <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo">
+                <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo" style="height: 50px; width: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
                     <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
@@ -262,116 +279,48 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
         </div>
     </nav>
 
-    <div class="image-banner">
-        <img src="img/puertoVega2.jpg" alt="Puerto de Vega">
-        <h2>Puerto de Vega</h2>
-    </div>
+    <!-- Banner de imagen -->
+    <header class="image-banner">
+        <img src="img/cabecera-Museo-Etnografico-PuertoVega.jpg" alt="Plata Tapia">
+        <h2>Museo Etnografico e Historias de la Mar</h2>
+    </header>
 
-    <div class="container">
-        <div class="row">
-            <!-- Información del pueblo -->
-            <div class="col-md-9">
-                <div style="text-align: center; margin-top: 30px;">
-                    <a class="toggle-link" onclick="toggleContent()">Ver Información del Pueblo</a>
-                </div>
-                <div class="content" id="contentSection">
-                    <div class="section">
-                        <p>Situado en el concejo asturiano de Navia, Puerto de Vega es un pueblo marinero que conserva el encanto de su pasado pesquero. Su historia se entrelaza con el mar Cantábrico, que ha sido fuente de vida y sustento para sus habitantes a lo largo de los siglos.
-                            <br>
-                            Los orígenes de Puerto de Vega se remontan a la Edad Media, aunque su apogeo llegó en los siglos XVIII y XIX, cuando se convirtió en un importante puerto ballenero y pesquero. Su situación estratégica lo convirtió en un punto clave del transporte marítimo de mercancías, llegando a albergar la primera aduana de Asturias.
-                        </p>
-                        <img src="https://www.naviaturismo.com/v_portal/inc/imagen.asp?f=Puerto_de_Vega_panoramica_267.jpg&c=1" alt="Vista del pueblo al atardecer">
-                        <p><br>El pueblo conserva su arquitectura tradicional, con casas de pescadores de colores vivos y estrechas calles empedradas que desembocan en el puerto. El puerto, con su lonja y sus barcos de pesca, sigue siendo el corazón de la vida local.</p>
-                        <img src="https://www.naviaturismo.com/v_portal/inc/imagen.asp?f=DSC_0179_[800x600]40.jpg&c=1" alt="Gente disfrutando de un festival en el pueblo">
-                        <p><br>Puerto de Vega ha sabido conservar su identidad marinera, pero también ha sabido adaptarse a los nuevos tiempos, convirtiéndose en un destino turístico atractivo. Sus playas, su gastronomía y su ambiente tranquilo atraen a visitantes que buscan disfrutar de la belleza de la costa asturiana.</p>
+    <!-- Contenido principal -->
+    <div class="content">
+        <h2 class="text-center">Conoce las Historias del Cantabrico</h2>
+        <p>
+        El Museo Etnográfico Juan Pérez Villamil de Puerto de Vega es un espacio que preserva y difunde la rica herencia cultural de esta villa marinera y de la región occidental de Asturias. Este museo, que lleva el nombre de un ilustre hijo de Puerto de Vega, Juan Pérez Villamil, ofrece a los visitantes una visión auténtica de la vida tradicional asturiana, con especial atención a las actividades relacionadas con el mar, el campo y la emigración.
 
-                        <div class="image-container">
-                            <img src="https://patrimoniuindustrial.com/wp-content/uploads/2022/01/B_A_HDR_10_Rula-de-Puerto-de-Vega_03.jpg" alt="Vista de Puerto de Vega">
-                            <img src="https://vacacionesenasturias.es/wp-content/uploads/2023/02/arponero-mirador-de-la-riva-9-1-1.jpg" alt="Fiestas en Puerto de Vega">
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Sección adicional -->
-                <div class="section">
-                    <h2>Conoce Puerto de Vega</h2>
-                    <div class="grid">
-                    <div class="grid-item" onclick="window.location.href='ParqueBenignoBlanco.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
-                            <img src="img/ParquePuertoVega.jpg" alt="Parque de Puerto de Vega">
-                            <p>Un distintivo parque floral en el que pasar una tarde con los tuyos</p>
-                        </div>
-                        <div class="grid-item" onclick="window.location.href='MuralesPuertoVega.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
-                        <img src="img/MuralesPuertoVega.jpg" alt="Murales de Puerto de Vega">
-                            <p>Hazle una visita a los bonitos murales que dan esencia a este pequeño pueblo</p>
-                        </div>
-                        <div class="grid-item" onclick="window.location.href='MuseoEtnograficoPuertoVega.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
-                        <img src="img/MuseoPuertVega.jpg" alt="Museo etnografico">
-                            <p>Si te gusta el mar y sus historias tienes que visitar el Museo Etnografico </p>
-                        </div>
-                        <div class="grid-item" onclick="window.location.href='Lonja.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
-                        <img src="img/LonjaPuertoVega.jpg" alt="Lonja">
-                            <p>No hay mejor sitio que nuestro pequeños pueblo para ver una lonja</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-               <!-- Contenedor de negocios locales -->
-               <div class="col-md-3">
-                <div class="business-container">
-                    <h3>Negocios Locales</h3>
-                    <?php
-                    // Incluir la conexión a la base de datos
-                    include "conexion.php";
+<br>
+El museo ocupa el ala este de la antigua fábrica de conservas La Arenesca, un edificio histórico que ha sido restaurado para albergar esta colección etnográfica. La exposición se distribuye en varias salas, donde se muestran objetos y herramientas que reflejan el modo de vida de los pescadores, campesinos y emigrantes asturianos.
 
-                    // Verificar si la conexión fue exitosa
-                    if ($conn->connect_error) {
-                        die("Error de conexión: " . $conn->connect_error);
-                    }
 
-                    // Consulta SQL para obtener los negocios de Tapia, ordenados por número de reseñas
-                    $query = "
-            SELECT b.id, b.username, b.business_name, b.profile_pic, COUNT(r.id) AS review_count
-            FROM businesses b
-            LEFT JOIN reviews r ON b.business_name = r.business_name
-            WHERE b.location LIKE '%Puerto de Vega%' AND b.role = 'negocio'
-            GROUP BY b.id
-            ORDER BY review_count DESC
-        ";
-                    $result = $conn->query($query);
 
-                    if ($result->num_rows > 0) {
-                        $count = 0;
-                        while ($row = $result->fetch_assoc()) {
-                            // Mostrar solo los primeros 5 negocios
-                            if ($count < 5) {
-                                echo '<a href="MiNegocio.php?username=' . urlencode($row['username']) . '" class="business-item">';
-                                echo '<img src="uploads/' . htmlspecialchars($row['profile_pic']) . '" alt="' . htmlspecialchars($row['business_name']) . '">';
-                                echo '<p>' . htmlspecialchars($row['business_name']) . '</p>';
-                                echo '</a>';
-                                $count++;
-                            }
-                        }
+<br>
+Entre las piezas expuestas, destacan utensilios de pesca, herramientas de labranza, objetos de uso cotidiano y fotografías antiguas. El museo también cuenta con una sección dedicada a la emigración asturiana, donde se muestran objetos y documentos que testimonian la experiencia de aquellos que dejaron su tierra en busca de un futuro mejor.
 
-                        // Mostrar el botón si hay más de 5 negocios
-                        if ($result->num_rows > 5) {
-                            echo '<div class="text-center mt-3">';
-                            echo '<a href="todos_los_negocios.php?pueblo=PuertoVega" class="btn btn-primary">Ver todos los negocios de Puerto de Vega</a>';
-                            echo '</div>';
-                        }
-                    } else {
-                        echo '<p>No hay negocios registrados en Puerto de Vega.</p>';
-                    }
 
-                    // Cerrar la conexión
-                    $conn->close();
-                    ?>
-                </div>
-            </div>
-            </div>
+
+
+        </p>
+
+        <div class="image-container">
+            <img src="img/MuseoEtnograficoPuertoVega2.jpg" alt="Castros de Coaña">
+            <img src="img/MuseoEtnograficoPuertoVega1.jpg" alt="Paisaje de Castros de Coaña">
+        </div>
+        <p><br>
+        Además de la exposición permanente, el Museo Etnográfico Juan Pérez Villamil organiza exposiciones temporales y actividades culturales, como charlas, talleres y conciertos. El museo también ofrece visitas guiadas para grupos y escolares, adaptando el contenido a las diferentes edades e intereses.
+
+
+
+            <br>
+            El Museo Etnográfico Juan Pérez Villamil es un lugar imprescindible para quienes desean conocer la historia y la cultura de Puerto de Vega y de la Asturias occidental. Su colección etnográfica y sus actividades culturales lo convierten en un espacio dinámico y enriquecedor.            <div class="text-center my-4">
+            <a href="PuertoVega.php" class="btn btn-custom">Volver a Puerto de Vega</a>
         </div>
     </div>
-
+    <!-- Footer -->
     <footer class="footer bg-dark text-white py-5">
         <div class="container">
             <div class="row">
@@ -380,7 +329,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
                     <h4 class="mb-3">Con el apoyo de:</h4>
                     <div class="d-flex justify-content-center flex-wrap">
                         <img src="img/Escudo_de_Tapia_de_Casariego.gif" alt="Escudo Tapia de Casariego" class="img-fluid m-2" style="max-height: 80px;">
-                        <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
+                        <img src="img/escudoNavia.png" alt="Escudo Taramundi" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Castropol.svg" alt="Escudo Castropol" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Vegadeo.svg" alt="Escudo Vegadeo" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
@@ -439,6 +388,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

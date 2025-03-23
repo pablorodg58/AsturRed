@@ -16,8 +16,9 @@ $business_name = '';
 $address = '';
 $phone = '';
 $description = '';
+$tipo_negocio = ''; // Añadir esta variable
 
-$stmt = $conn->prepare("SELECT business_name, address, phone, description, profile_pic, banner_pic FROM businesses WHERE username = ?");
+$stmt = $conn->prepare("SELECT business_name, address, phone, description, profile_pic, banner_pic, tipo_negocio FROM businesses WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -30,6 +31,7 @@ if ($result->num_rows === 1) {
     $description = $row['description'] ?? '';
     $profile_pic = $row['profile_pic'] ?? $profile_pic;
     $banner_pic = $row['banner_pic'] ?? $banner_pic;
+    $tipo_negocio = $row['tipo_negocio'] ?? ''; // Obtener el tipo de negocio
 }
 
 // Procesar subida de imágenes y actualización de datos del negocio (solo si es el propietario)
@@ -159,6 +161,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $is_owner) {
         $phone = $_POST['phone'];
         $stmt = $conn->prepare("UPDATE businesses SET phone = ? WHERE username = ?");
         $stmt->bind_param("ss", $phone, $username);
+        $stmt->execute();
+    }
+
+    if (isset($_POST['tipo_negocio'])) {
+        $tipo_negocio = $_POST['tipo_negocio'];
+        $stmt = $conn->prepare("UPDATE businesses SET tipo_negocio = ? WHERE username = ?");
+        $stmt->bind_param("ss", $tipo_negocio, $username);
         $stmt->execute();
     }
 
@@ -334,25 +343,28 @@ if ($result->num_rows > 0) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pueblos.html">Pueblos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eventos</a>
-                    </li>
-                    <?php if (isset($_SESSION['business_username'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="MiNegocio.php">Mi Negocio</a>
-                        </li>
-                    <?php endif; ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Cerrar Sesión</a>
-                    </li>
-                </ul>
+            <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
+          <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
+          <?php if (isset($_SESSION['username']) || isset($_SESSION['admin_logged_in']) || isset($_SESSION['business_username'])): ?>
+            <?php if (isset($_SESSION['business_username']) && $_SESSION['role'] === 'negocio'): ?>
+              <!-- Si es un negocio, mostrar "Mi Negocio" -->
+              <li class="nav-item"><a class="nav-link" href="MiNegocio.php">Mi Negocio</a></li>
+            <?php elseif (isset($_SESSION['business_username']) && $_SESSION['role'] === 'ayuntamiento'): ?>
+              <!-- Si es un ayuntamiento, mostrar "Crear Evento" -->
+              <li class="nav-item"><a class="nav-link" href="crear_evento.php">Crear Evento</a></li>
+            <?php elseif (isset($_SESSION['username'])): ?>
+              <!-- Si es un turista, mostrar "Mi Perfil" -->
+              <li class="nav-item"><a class="nav-link" href="miPerfil.php">Mi Perfil</a></li>
+            <?php endif; ?>
+            <!-- Mostrar "Cerrar Sesión" para ambos -->
+            <li class="nav-item"><a class="nav-link" href="logout.php">Cerrar Sesión</a></li>
+          <?php else: ?>
+            <!-- Si no ha iniciado sesión, mostrar "Iniciar Sesión" -->
+            <li class="nav-item"><a class="nav-link" href="loginform.php">Iniciar Sesión</a></li>
+          <?php endif; ?>
+        </ul>
             </div>
         </div>
     </nav>
@@ -379,6 +391,7 @@ if ($result->num_rows > 0) {
             <p><?= htmlspecialchars($description) ?></p>
             <p><i class="bi bi-geo-alt"></i> <?= htmlspecialchars($address) ?></p>
             <p><i class="bi bi-telephone"></i> <?= htmlspecialchars($phone) ?></p>
+            <p><i class="bi bi-shop"></i> <?= htmlspecialchars($tipo_negocio) ?></p> <!-- Mostrar el tipo de negocio -->
             <?php if ($is_owner): ?>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
                     <i class="bi bi-pencil"></i> Editar perfil
@@ -494,6 +507,10 @@ if ($result->num_rows > 0) {
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Teléfono</label>
                                 <input type="text" class="form-control" name="phone" value="<?= htmlspecialchars($phone) ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="tipo_negocio" class="form-label">Tipo de negocio</label>
+                                <input type="text" class="form-control" name="tipo_negocio" value="<?= htmlspecialchars($tipo_negocio) ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descripción</label>

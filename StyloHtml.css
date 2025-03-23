@@ -60,12 +60,10 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: #006d6d;
     color: white;
 }
 
 .navbar-nav .nav-link.active {
-    background-color: #004d4d;
     color: white;
 }
 .header a {
@@ -97,7 +95,21 @@ body {
         margin: 0 10px; /* Ajusta el margen de la barra de búsqueda */
     }
 }
+.btn-primary {
+    background-color: #005757;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
 
+.btn-primary:hover {
+    background-color: #004545;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
 footer {
     background-color: #333; 
     color: white;

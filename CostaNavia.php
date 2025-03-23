@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>Costa de Navia</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,28 +255,33 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabecera-Costa-Navia.jpg" alt="Castros de Coaña">
+    <h2>Costa de Navia</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Un Mural Bañado por el Cantabrico</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    La costa de Navia, es un fascinante mosaico de paisajes donde el mar Cantábrico ha esculpido acantilados imponentes, playas de ensueño y un faro que guía a los navegantes.
+    <br>
+    El Faro de Navia, situado en la punta de la Atalaya, es un símbolo de la costa naviega. Su luz guía a los barcos que navegan por estas aguas, y desde su emplazamiento se pueden contemplar vistas panorámicas de la costa y del mar.
+
+
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+Los acantilados de Navia son un espectáculo natural que impresiona por su verticalidad y su belleza salvaje. Entre los más destacados se encuentran los acantilados de Frejulfe, que rodean la playa del mismo nombre, declarada Monumento Natural por su valor ecológico y paisajístico. También sobresalen los acantilados de Barayo, que enmarcan la playa de Barayo, otra joya natural de la costa naviega.
+
     </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/CostaNavia1.jpg" alt="Castros de Coaña">
+      <img src="img/CostaNavia2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    Las playas de Navia son otro de los grandes atractivos de su costa. La Playa de Navia, situada en la desembocadura del río Navia, es una playa urbana con todos los servicios. La Playa de Frejulfe, con su arena dorada y sus dunas, es ideal para los amantes de la naturaleza. La Playa de Barayo, compartida con el concejo de Valdés, es un espacio natural protegido donde se combinan dunas, marismas y un estuario.
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
+Además de sus acantilados y playas, la costa de Navia ofrece otros atractivos, como sus pueblos marineros, donde se puede disfrutar de la gastronomía local y del ambiente marinero. La Senda Costa Naviega, un sendero que recorre la costa, permite descubrir todos estos paisajes a pie, disfrutando de la brisa marina y de las vistas panorámicas.    </p>
     <div class="text-center my-4">
       <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
     </div>

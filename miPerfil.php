@@ -253,20 +253,28 @@ if ($result->num_rows > 0) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pueblos.html">Pueblos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="PerfilUsuario.html">Iniciar Sesión</a>
-                    </li>
-                </ul>
+            <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
+          <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
+          <?php if (isset($_SESSION['username']) || isset($_SESSION['admin_logged_in']) || isset($_SESSION['business_username'])): ?>
+            <?php if (isset($_SESSION['business_username']) && $_SESSION['role'] === 'negocio'): ?>
+              <!-- Si es un negocio, mostrar "Mi Negocio" -->
+              <li class="nav-item"><a class="nav-link" href="MiNegocio.php">Mi Negocio</a></li>
+            <?php elseif (isset($_SESSION['business_username']) && $_SESSION['role'] === 'ayuntamiento'): ?>
+              <!-- Si es un ayuntamiento, mostrar "Crear Evento" -->
+              <li class="nav-item"><a class="nav-link" href="crear_evento.php">Crear Evento</a></li>
+            <?php elseif (isset($_SESSION['username'])): ?>
+              <!-- Si es un turista, mostrar "Mi Perfil" -->
+              <li class="nav-item"><a class="nav-link" href="miPerfil.php">Mi Perfil</a></li>
+            <?php endif; ?>
+            <!-- Mostrar "Cerrar Sesión" para ambos -->
+            <li class="nav-item"><a class="nav-link" href="logout.php">Cerrar Sesión</a></li>
+          <?php else: ?>
+            <!-- Si no ha iniciado sesión, mostrar "Iniciar Sesión" -->
+            <li class="nav-item"><a class="nav-link" href="loginform.php">Iniciar Sesión</a></li>
+          <?php endif; ?>
+        </ul>
             </div>
         </div>
     </nav>

@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>Castropol, Pueblo Ejemplar</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,30 +255,29 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabeceraPuebloEjemplar.webp" alt="Castros de Coaña">
+    <h2>Castropol, Un Pueblo Ejemplar</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Por Algo Somos Diferentes</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
-<br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
-    </p>
+    Nosotros, el pueblo de Castropol, siempre hemos sido un faro de tradición y progreso en Asturias. Desde tiempos inmemoriales, hemos cultivado nuestras raíces, manteniendo vivas las costumbres que nos definen, al tiempo que abrazamos el avance y la cultura. En 1997, la Fundación Príncipe de Asturias reconoció nuestra valía, otorgándonos el prestigioso premio "Pueblo Ejemplar de Asturias". Este galardón no fue fruto de la casualidad, sino el reconocimiento a siglos de esfuerzo y dedicación
+    <br>
+    Nuestra historia está grabada en las piedras de nuestra Iglesia Parroquial de Santiago Apóstol y en los anaqueles de nuestra insigne Biblioteca Popular Menéndez Pelayo, un bastión del saber que ha iluminado las mentes de generaciones. Hemos sabido preservar nuestro legado, al tiempo que nos adaptamos a los nuevos tiempos, demostrando que tradición y modernidad pueden coexistir en armonía.    </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/PuebloEjemplar1.jpg" alt="Castros de Coaña">
+      <img src="img/PuebloEjemplar2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    El monumento que se erige en nuestra Plaza del Cruzadero es un símbolo de nuestro espíritu indomable, un recordatorio de que somos un pueblo ejemplar en todos los sentidos de la palabra. No solo nos enorgullece nuestro patrimonio cultural, sino también nuestro entorno natural, con joyas como la playa de Penarronda, un tesoro que hemos sabido proteger y conservar.
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
+Nosotros, el pueblo de Castropol, seguiremos siendo un referente para Asturias y para el mundo, un ejemplo de cómo se puede construir un futuro próspero sin renunciar a las raíces que nos hacen únicos.    </p>
     <div class="text-center my-4">
-      <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
+      <a href="Castropol.php" class="btn btn-custom">Volver a Castropol</a>
     </div>
   </div>
   <!-- Footer -->

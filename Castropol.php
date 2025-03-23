@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// Redirigir al formulario de inicio de sesión si no hay sesión activa
+if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !isset($_SESSION['business_username'])) {
+    // No redirigimos, simplemente mostramos "Iniciar Sesión"
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -99,11 +107,16 @@
             overflow: hidden;
             transition: max-height 1s ease, opacity 1s ease;
             display: none;
-        }
+            text-align: justify; /* Texto justificado */
 
+        }
+        
         .content.show {
             display: block; 
             opacity: 1;
+        }
+        .content p {
+            text-align: justify; /* Asegurar que todos los párrafos estén justificados */
         }
 
         .content img {
@@ -183,6 +196,25 @@
         .toggle-link:hover::after {
             width: 100%;
         }
+        .btn-primary {
+            background-color: #005757;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #004545;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -197,19 +229,27 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pueblos.html">Pueblos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="PerfilUsuario.html">Iniciar Sesión</a>
-                    </li>
+            <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pueblos.php">Pueblos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="eventos.php">Eventos</a></li>
+                    <?php if (isset($_SESSION['username']) || isset($_SESSION['admin_logged_in']) || isset($_SESSION['business_username'])): ?>
+                        <?php if (isset($_SESSION['business_username']) && $_SESSION['role'] === 'negocio'): ?>
+                            <!-- Si es un negocio, mostrar "Mi Negocio" -->
+                            <li class="nav-item"><a class="nav-link" href="MiNegocio.php">Mi Negocio</a></li>
+                        <?php elseif (isset($_SESSION['business_username']) && $_SESSION['role'] === 'ayuntamiento'): ?>
+                            <!-- Si es un ayuntamiento, mostrar "Crear Evento" -->
+                            <li class="nav-item"><a class="nav-link" href="crear_evento.php">Crear Evento</a></li>
+                        <?php elseif (isset($_SESSION['username'])): ?>
+                            <!-- Si es un turista, mostrar "Mi Perfil" -->
+                            <li class="nav-item"><a class="nav-link" href="miPerfil.php">Mi Perfil</a></li>
+                        <?php endif; ?>
+                        <!-- Mostrar "Cerrar Sesión" para ambos -->
+                        <li class="nav-item"><a class="nav-link" href="logout.php">Cerrar Sesión</a></li>
+                    <?php else: ?>
+                        <!-- Si no ha iniciado sesión, mostrar "Iniciar Sesión" -->
+                        <li class="nav-item"><a class="nav-link" href="loginform.php">Iniciar Sesión</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -229,12 +269,20 @@
                 </div>
                 <div class="content" id="contentSection">
                     <div class="section">
-                        <h2>Información del pueblo</h2>
-                        <p>Castropol es un encantador pueblo asturiano situado en la ría del Eo. Conocido por su rica historia y su entorno natural privilegiado, es un destino turístico muy valorado por sus playas, su gastronomía y su patrimonio cultural.</p>
+                        <p>Castropol, villa marinera situada en la ría del Eo, en la frontera entre Asturias y Galicia, es un lugar que destaca por su belleza paisajística, su rica historia y su ambiente tranquilo. Su ubicación estratégica, a orillas de la ría y con vistas a la costa gallega, le ha conferido un papel importante a lo largo de los siglos.
+<br>
+Los orígenes de Castropol se remontan a la Edad Media, aunque su desarrollo como puerto pesquero y comercial se consolidó en los siglos XVIII y XIX. Su puerto, protegido por la ría del Eo, ha sido históricamente un punto clave para la actividad pesquera y el comercio marítimo.
+<br>
+El casco antiguo de Castropol conserva el encanto de su pasado, con casas de indianos de colores vivos y calles estrechas que invitan a pasear. La plaza del Ayuntamiento, con su iglesia parroquial y su palacio de Omaña, es el corazón de la villa.
+
+</p>
                         <img src="https://www.turismoasturias.es/o/adaptive-media/image/10720011/3/02f326a1-c940-be9b-1106-e425f8aaa342?t=1732271493955" alt="Vista del pueblo al atardecer">
-                        <p>Las festividades del pueblo son un reflejo de su rica cultura, con eventos que incluyen ferias, fiestas patronales y actividades para toda la familia. Cada verano, los visitantes son bienvenidos a disfrutar de la hospitalidad de nuestra comunidad.</p>
+                        <p><br>Castropol es conocida por su belleza paisajística, con vistas panorámicas de la ría del Eo y la costa gallega. La ría, declarada Reserva de la Biosfera, es un lugar ideal para la práctica de deportes náuticos y la observación de aves.
+
+</p>
                         <img src="https://guiadeasturias.com/wp-content/uploads/2017/08/Castropol.jpg" alt="Gente disfrutando de un festival en el pueblo">
-                        <p>Te invitamos a explorar los hermosos rincones de Castropol, desde sus playas de arena dorada hasta sus senderos naturales, ideales para caminatas y paseos en bicicleta. ¡Ven y descubre lo que tenemos para ofrecerte!</p>
+                        <p><br>Castropol también es un destino popular para los amantes de la gastronomía, gracias a sus productos frescos del mar y su cocina tradicional. La villa cuenta con una amplia oferta de restaurantes y sidrerías donde se puede degustar la cocina asturiana.
+</p>
                         
                         <div class="image-container">
                             <img src="https://asturiaspordescubrir.com/wp-content/uploads/2013/04/villa-rosita-ha-vuelto-1c7f0e.jpg" alt="Vista de Castropol">
@@ -245,30 +293,30 @@
 
                 <!-- Sección adicional -->
                 <div class="section">
-                    <h2>Añadir un subtítulo</h2>
+                    <h2>Conoce Castropol</h2>
                     <div class="grid">
-                        <div class="grid-item">
-                            <img src="img/ParqueCastropol.jpg" alt="Mercado local">
-                            <p>Explora nuestro mercado local.</p>
+                    <div class="grid-item" onclick="window.location.href='ParqueCastropol.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
+                    <img src="img/ParqueCastropol.jpg" alt="Mercado local">
+                            <p>Un pueblo que contiene bellos y tranquilos parques con aroma único</p>
                         </div>
-                        <div class="grid-item">
-                            <img src="img/MonumentoPuebloEjemplar.jpg" alt="Recetas tradicionales">
-                            <p>Prueba nuestras recetas tradicionales.</p>
+                        <div class="grid-item" onclick="window.location.href='MonumentoPuebloEjemplar.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
+                            <img src="img/PuebloEjemplar2.jpg" alt="Recetas tradicionales">
+                            <p>Descubre la razón por la que somos un pueblo ejemplar</p>
                         </div>
-                        <div class="grid-item">
+                        <div class="grid-item" onclick="window.location.href='PalacioCastropol.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
                             <img src="img/PalacioCastropol.jpg" alt="Eventos en el pueblo">
-                            <p>Participa en nuestros eventos anuales.</p>
+                            <p>Antiguos palacios imperiales esperan a ser visitados</p>
                         </div>
-                        <div class="grid-item">
+                        <div class="grid-item" onclick="window.location.href='HipicaCastropol.php';" style="cursor: pointer; text-decoration: none; color: inherit;">
                             <img src="img/CastopolHipica.jpg" alt="Naturaleza alrededor del pueblo">
-                            <p>Disfruta de la naturaleza que rodea nuestra localidad.</p>
+                            <p>Disfruta de un paseo a caballo único sobre la orilla del río Eo</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Contenedor de negocios locales -->
-            <div class="col-md-3">
+             <!-- Contenedor de negocios locales -->
+     <div class="col-md-3">
                 <div class="business-container">
                     <h3>Negocios Locales</h3>
                     <?php
@@ -280,16 +328,35 @@
                         die("Error de conexión: " . $conn->connect_error);
                     }
 
-                    // Obtener los negocios de Castropol
-                    $query = "SELECT id, username, business_name, profile_pic FROM businesses WHERE address LIKE '%Castropol%'";
+                    // Consulta SQL para obtener los negocios de Castropol, ordenados por número de reseñas
+                    $query = "
+            SELECT b.id, b.username, b.business_name, b.profile_pic, COUNT(r.id) AS review_count
+            FROM businesses b
+            LEFT JOIN reviews r ON b.business_name = r.business_name
+            WHERE b.location LIKE '%Castropol%' AND b.role = 'negocio'
+            GROUP BY b.id
+            ORDER BY review_count DESC
+        ";
                     $result = $conn->query($query);
 
                     if ($result->num_rows > 0) {
+                        $count = 0;
                         while ($row = $result->fetch_assoc()) {
-                            echo '<a href="MiNegocio.php?username=' . urlencode($row['username']) . '" class="business-item">';
-                            echo '<img src="uploads/' . htmlspecialchars($row['profile_pic']) . '" alt="' . htmlspecialchars($row['business_name']) . '">';
-                            echo '<p>' . htmlspecialchars($row['business_name']) . '</p>';
-                            echo '</a>';
+                            // Mostrar solo los primeros 5 negocios
+                            if ($count < 5) {
+                                echo '<a href="MiNegocio.php?username=' . urlencode($row['username']) . '" class="business-item">';
+                                echo '<img src="uploads/' . htmlspecialchars($row['profile_pic']) . '" alt="' . htmlspecialchars($row['business_name']) . '">';
+                                echo '<p>' . htmlspecialchars($row['business_name']) . '</p>';
+                                echo '</a>';
+                                $count++;
+                            }
+                        }
+
+                        // Mostrar el botón si hay más de 5 negocios
+                        if ($result->num_rows > 5) {
+                            echo '<div class="text-center mt-3">';
+                            echo '<a href="todos_los_negocios.php?pueblo=Castropol" class="btn btn-primary">Ver todos los negocios de Castropol</a>';
+                            echo '</div>';
                         }
                     } else {
                         echo '<p>No hay negocios registrados en Castropol.</p>';
@@ -299,6 +366,7 @@
                     $conn->close();
                     ?>
                 </div>
+            </div>
             </div>
         </div>
     </div>

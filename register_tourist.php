@@ -46,9 +46,9 @@ if (isset($_POST['btnRegisterTourist'])) {
             max-width: 400px;
             margin: 20px auto;
             padding: 15px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.8);
             text-align: center;
         }
         .logo {
@@ -80,18 +80,21 @@ if (isset($_POST['btnRegisterTourist'])) {
             box-sizing: border-box;
         }
         .btn-primary {
-            width: 100%;
+            width: 80%;
             padding: 8px;
-            background: #007bff;
-            color: #fff;
+            background:rgba(0, 74, 85, 0);
+            color: #004955;
             border: none;
             border-radius: 5px;
             font-size: 0.9em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: width 0.4s, background 0.4s, transform 0.4s, color 0.4s;
         }
         .btn-primary:hover {
-            background: #0056b3;
+            width: 100%;
+            background: #004955;
+            transform: scale(1.00);
+            color: #fff;
         }
         .login-container p {
             margin-top: 10px;
@@ -99,7 +102,7 @@ if (isset($_POST['btnRegisterTourist'])) {
             font-size: 0.9em;
         }
         .login-container a {
-            color: #007bff;
+            color: #004955;
             text-decoration: none;
             font-size: 0.9em;
         }
@@ -143,7 +146,7 @@ if (isset($_POST['btnRegisterTourist'])) {
         <form action="register_tourist.php" method="post">
             <div class="form-group">
                 <label for="name">Nombre de usuario</label>
-                <input type="text" name="name" id="name" placeholder="Ingresa tu nombre de usuario" required>
+                <input type="text" name="name" id="name" placeholder="Introduce tu nombre" required>
             </div>
             <div class="form-group">
                 <label for="password">Contraseña</label>
@@ -152,7 +155,7 @@ if (isset($_POST['btnRegisterTourist'])) {
             <button type="submit" name="btnRegisterTourist" class="btn-primary">Registrarse</button>
         </form>
 
-        <p>¿Ya tienes cuenta? <a href="loginform.php">Iniciar sesión</a></p>
+        <p>¿Ya tienes cuenta? <a href="loginform.php"><strong>Iniciar sesión</strong></a></p>
     </div>
 </body>
 </html>

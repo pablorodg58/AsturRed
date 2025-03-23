@@ -1,23 +1,35 @@
 <?php
 session_start();
 
+// Verificar si el usuario ya ha iniciado sesión
 if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit();
 }
 
-$error = '';
+$error = ''; // Variable para almacenar mensajes de error
 
+// Procesar el formulario cuando se envía
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    include "conexion.php";
+    include "conexion.php"; // Incluir la conexión a la base de datos
 
+    // Obtener los datos del formulario
     $username = trim($_POST['username']);
     $password = $_POST['password'];
     $email = trim($_POST['email']);
     $business_name = trim($_POST['business_name']);
     $address = trim($_POST['address']);
+    $location = trim($_POST['location']); // Cambiado de 'pueblo' a 'location'
     $phone = trim($_POST['phone']);
-    $role = $_POST['role']; // Nuevo campo para el rol (negocio o ayuntamiento)
+    $tipo_negocio = trim($_POST['tipo_negocio']);
+    $otro_negocio = isset($_POST['otro_negocio']) ? trim($_POST['otro_negocio']) : '';
+
+    // Si selecciona "Otros", usa el texto ingresado
+    if ($tipo_negocio === "Otros" && !empty($otro_negocio)) {
+        $tipo_negocio = $otro_negocio;
+    }
+
+    $role = 'negocio';
 
     // Verificar si el nombre de usuario o el email ya existen
     $stmt = $conn->prepare("SELECT id FROM businesses WHERE username = ? OR email = ?");
@@ -28,10 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->num_rows > 0) {
         $error = "❌ El nombre de usuario o el correo electrónico ya están en uso.";
     } else {
+        // Hashear la contraseña
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO businesses (username, password, email, business_name, address, phone, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $username, $hashedPassword, $email, $business_name, $address, $phone, $role);
 
+        // Insertar el nuevo negocio en la base de datos
+        $stmt = $conn->prepare("INSERT INTO businesses (username, password, email, business_name, address, location, phone, tipo_negocio, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssss", $username, $hashedPassword, $email, $business_name, $address, $location, $phone, $tipo_negocio, $role);
         if ($stmt->execute()) {
             $_SESSION['success_message'] = "✅ Cuenta de negocio creada exitosamente.";
             header("Location: loginform.php");
@@ -40,6 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $error = "❌ Error al registrar el negocio. Intenta de nuevo.";
         }
     }
+
+    // Cerrar la conexión y liberar recursos
     $stmt->close();
     $conn->close();
 }
@@ -54,21 +70,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="Style.css">
     <style>
         body {
-            background-color: #f5f8fa;
             font-family: Arial, sans-serif;
         }
         .login-container {
             max-width: 400px;
             margin: 50px auto;
             padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 0px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.8);
             text-align: center;
         }
         .logo {
             width: 100px;
-            margin-bottom: 20px;
         }
         h2 {
             margin-bottom: 20px;
@@ -76,17 +90,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #333;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 8px;
             text-align: left;
         }
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
             font-weight: bold;
             color: #333;
             font-size: 0.9em;
         }
-        .form-group input, .form-group select {
+        .form-group input {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
@@ -94,19 +108,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 0.9em;
             box-sizing: border-box;
         }
-        .btn-primary {
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .flex-item {
+            flex: 1;
+        }
+        .form-group select {
             width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: #fff;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9em;
+            box-sizing: border-box;
+            background: #fff;
+            color: #333;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="%23333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path d="M6 9l6-6 6 6"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px 16px;
+        }
+        .form-group select:focus {
+            border-color: #004955;
+            outline: none;
+        }
+        .btn-primary {
+            width: 80%;
+            padding: 8px;
+            background: rgba(0, 74, 85, 0);
+            color: #004955;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 0.9em;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: width 0.4s, background 0.4s, transform 0.4s, color 0.4s;
         }
         .btn-primary:hover {
-            background: #0056b3;
+            width: 100%;
+            background: #004955;
+            transform: scale(1.00);
+            color: #fff;
         }
         .login-container p {
             margin-top: 10px;
@@ -114,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 0.9em;
         }
         .login-container a {
-            color: #007bff;
+            color: #004955;
             text-decoration: none;
         }
         .login-container a:hover {
@@ -157,25 +203,65 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="business_name">Nombre del negocio</label>
                 <input type="text" name="business_name" id="business_name" placeholder="Ingresa el nombre de tu negocio" required>
             </div>
-            <div class="form-group">
-                <label for="address">Dirección</label>
-                <input type="text" name="address" id="address" placeholder="Ingresa la dirección de tu negocio">
+            <div class="form-group flex-container">
+                <div class="flex-item">
+                    <label for="location">Pueblo</label>
+                    <input type="text" name="location" id="location" placeholder="Indica pueblo">
+                </div>
+                <div class="flex-item">
+                    <label for="address">Dirección</label>
+                    <input type="text" name="address" id="address" placeholder="Ingresa la dirección">
+                </div>
             </div>
             <div class="form-group">
                 <label for="phone">Teléfono</label>
                 <input type="tel" name="phone" id="phone" placeholder="Ingresa el teléfono de contacto">
             </div>
             <div class="form-group">
-                <label for="role">Rol</label>
-                <select name="role" id="role" required>
-                    <option value="negocio">Negocio</option>
-                    <option value="ayuntamiento">Ayuntamiento</option>
+                <label for="tipo_negocio">Tipo de negocio</label>
+                <select name="tipo_negocio" id="tipo_negocio" required onchange="mostrarCampoOtro()">
+                    <option value="">Seleccione un tipo</option>
+                    <option value="Camping">Camping</option>
+                    <option value="Carnicería">Carnicería</option>
+                    <option value="Confitería">Confitería</option>
+                    <option value="Estanco">Estanco</option>
+                    <option value="Farmacia">Farmacia</option>
+                    <option value="Floristería">Floristería</option>
+                    <option value="Frutería">Frutería</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Lavandería">Lavandería</option>
+                    <option value="Librería">Librería</option>
+                    <option value="Panadería">Panadería</option>
+                    <option value="Peluquería">Peluquería</option>
+                    <option value="Restaurante">Restaurante</option>
+                    <option value="Taller">Taller</option>
+                    <option value="Tienda">Tienda</option>
+                    <option value="Veterinario">Veterinario</option>
+                    <option value="Otros">Otros</option>
                 </select>
             </div>
+            <div class="form-group" id="campoOtro" style="display: none;">
+                <label for="otro_negocio">Especifique su negocio</label>
+                <input type="text" name="otro_negocio" id="otro_negocio" placeholder="Ingrese el tipo de negocio">
+            </div>
+
             <button type="submit" name="btnRegisterBusiness" class="btn-primary">Registrarse</button>
         </form>
 
-        <p>¿Ya tienes cuenta? <a href="loginform.php">Iniciar sesión</a></p>
+        <p>¿Ya tienes cuenta? <a href="loginform.php"><strong>Iniciar Sesión</strong></a></p>
     </div>
 </body>
-</html>
+</html> 
+<script>
+     function mostrarCampoOtro() {
+        var select = document.getElementById("tipo_negocio");
+        var campoOtro = document.getElementById("campoOtro");
+        if (select.value === "Otros") {
+            campoOtro.style.display = "block"; // Mostrar campo
+            document.getElementById("otro_negocio").setAttribute("required", "required"); // Hacer obligatorio
+        } else {
+            campoOtro.style.display = "none"; // Ocultar campo
+            document.getElementById("otro_negocio").removeAttribute("required"); // Quitar obligatoriedad
+        }
+    }
+</script>

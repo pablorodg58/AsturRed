@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>Parque Historico de Navia</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,28 +255,41 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabecera-parque-historico-navia.jpg" alt="Castros de Coaña">
+    <h2>Parque Historico de Navia</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Un Parque Lleno de Nuestra Historia</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    El Parque Histórico del Navia, ubicado en el occidente de Asturias, es un espacio que abarca varios concejos y ofrece un recorrido a través de la historia y la cultura de la región. Este parque se caracteriza por la riqueza de su patrimonio, que incluye desde restos arqueológicos hasta ejemplos de arquitectura tradicional.
+<br>   
+
+El parque se extiende a lo largo del río Navia y sus afluentes, abarcando una diversidad de paisajes que van desde la costa hasta el interior montañoso. Esta variedad geográfica se refleja en la diversidad de recursos turísticos que ofrece el parque.
+
+
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+Uno de los principales atractivos del Parque Histórico del Navia es su patrimonio arqueológico, que incluye numerosos castros, asentamientos fortificados de la Edad del Hierro. Estos castros, como el de Coaña, ofrecen una visión de la vida de los primeros pobladores de la región.
+
+
+
     </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/ParquehistoricoNavia1.jpg" alt="Castros de Coaña">
+      <img src="img/ParquehistoricoNavia2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    Además de los castros, el parque cuenta con ejemplos de arquitectura tradicional, como casas de piedra, hórreos y molinos de agua. Estos elementos reflejan el modo de vida de las comunidades rurales que han habitado la zona durante siglos.
+
+
+
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
+El Parque Histórico del Navia también ofrece la oportunidad de disfrutar de la naturaleza, con senderos para caminar, rutas en bicicleta y miradores con vistas panorámicas. Los embalses del río Navia, como el de Grandas de Salime, son lugares ideales para la pesca y los deportes acuáticos.
+
+
     <div class="text-center my-4">
       <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
     </div>

@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>El Parque de Castropol</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,30 +255,38 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/cabecera-parque-castropol.jpg" alt="Castros de Coaña">
+    <h2>El Parque de Castropol</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Un Paseo por un rincón diferente</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    El Parque Vicente Loriente Acevedo, situado en el corazón de Castropol, es un espacio verde que combina historia, belleza natural y un ambiente tranquilo. Este parque lleva el nombre de uno de los indianos más ilustres y activos de Castropol, Vicente Loriente Acevedo, cuya contribución a la comunidad dejó una huella perdurable.
+
+    Este parque se caracteriza por su diseño romántico, con senderos serpenteantes, árboles centenarios y una cuidada selección de plantas y flores. Su atmósfera serena lo convierte en un lugar ideal para pasear, relajarse y disfrutar del paisaje.
+
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+El parque no solo es un espacio de ocio, sino también un lugar con historia. Vicente Loriente Acevedo, tras enriquecerse en Cuba, regresó a su tierra natal y participó activamente en la vida política y social de Castropol. Su legado se refleja en este parque, que es un testimonio de su compromiso con la comunidad.
+
+
     </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/castropolParque1.jpg" alt="Castros de Coaña">
+      <img src="img/castropolParque2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    Además de su valor histórico, el parque ofrece un entorno natural privilegiado. Desde sus miradores, se pueden contemplar vistas panorámicas de la ría del Eo y el paisaje circundante. Es un lugar perfecto para disfrutar de la belleza de la costa asturiana.
+
+
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
+El Parque Vicente Loriente Acevedo es un punto de encuentro para los habitantes de Castropol y un atractivo turístico para los visitantes. Su combinación de historia, naturaleza y tranquilidad lo convierte en un lugar imprescindible para quienes visitan esta hermosa villa asturiana.
+
     <div class="text-center my-4">
-      <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
+      <a href="Castropol.php" class="btn btn-custom">Volver a Castropol</a>
     </div>
   </div>
   <!-- Footer -->

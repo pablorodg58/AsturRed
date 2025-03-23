@@ -22,9 +22,9 @@ if (isset($_SESSION['username'])) {
             max-width: 400px;
             margin: 50px auto;
             padding: 20px;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.8);
             text-align: center;
         }
         .logo {
@@ -43,7 +43,6 @@ if (isset($_SESSION['username'])) {
             margin-bottom: 20px;
         }
         .type-card {
-            background: #fff;
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 20px;
@@ -67,6 +66,7 @@ if (isset($_SESSION['username'])) {
         }
         .type-card:hover::before {
             left: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
         }
         .type-card:hover {
             transform: translateY(-5px);
@@ -125,7 +125,7 @@ if (isset($_SESSION['username'])) {
             </a>
         </div>
 
-        <p>¿Ya tienes cuenta? <a href="loginform.php">Iniciar sesión</a></p>
+        <p>¿Ya tienes cuenta? <a href="loginform.php" style="color: #004955; text-decoration:none"><strong>Iniciar sesión</strong></a></p>
     </div>
 </body>
 </html>

@@ -8,7 +8,7 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Descubre la belleza y la historia de Castros de Coaña, sus negocios locales, rutas culturales y eventos.">
-  <title>Castros de Coaña</title>
+  <title>El Palacio de Castropol</title>
   <!-- Si no utilizas StyloHtml.css, puedes eliminarlo -->
   <link href="StyloHtml.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -255,30 +255,32 @@ session_start(); // Asegúrate de que esto esté al principio del archivo
 
   <!-- Banner de imagen -->
   <header class="image-banner">
-    <img src="img/cabecera-Coaña.jpg" alt="Castros de Coaña">
-    <h2>Castros de Coaña</h2>
+    <img src="img/Cabecera-Palacio-Castropol.jpg" alt="Castros de Coaña">
+    <h2>El Palacio de Castropol</h2>
   </header>
   
    <!-- Contenido principal -->
    <div class="content">
-    <h2 class="text-center">La Historia Ceuta de los Castros de Coaña</h2>
+    <h2 class="text-center">Un Palacete que visitar</h2>
     <p>
-      El Castro de Coaña, ubicado en Villacondide, Coaña, es uno de los yacimientos arqueológicos más emblemáticos de la cultura castreña en el norte de España. Declarado Bien de Interés Cultural, este asentamiento fortificado ofrece una ventana al pasado, permitiendo a los visitantes explorar las estructuras y vestigios de un antiguo poblado que data de la Edad del Hierro.
+    El Palacio del Marqués de Santa Cruz es un destacado ejemplo de arquitectura palaciega con una rica historia. Este edificio, cuya construcción original se remonta al siglo XVI, ha experimentado diversas transformaciones a lo largo de los siglos, reflejando los cambios estilísticos y las necesidades de sus habitantes.    <br>
+    La estructura del palacio presenta una combinación de elementos arquitectónicos que abarcan desde el estilo renacentista hasta el barroco. Su núcleo original, del siglo XVI, se ha visto ampliado y modificado en épocas posteriores, especialmente en el siglo XVIII, cuando se realizaron importantes reformas tras un incendio que afectó al edificio.
 <br>
-      La historia del Castro de Coaña se remonta al siglo IV a.C., alcanzando su apogeo entre los siglos I a.C. y I d.C. Su ubicación estratégica, con vistas al valle del río Navia, lo convirtió en un punto clave para el control del territorio y la defensa. Las excavaciones arqueológicas han revelado un complejo entramado de viviendas circulares y rectangulares, así como un sistema defensivo compuesto por murallas y fosos.
+Uno de los elementos más característicos del palacio es su fachada principal, que muestra una cuidada simetría y una elegante combinación de materiales. En su interior, el palacio alberga una serie de estancias que conservan elementos originales, como chimeneas, suelos de madera y detalles decorativos.
+
     </p>
     
     <div class="image-container">
-      <img src="img/castrosCoañaAntiguo.jpg" alt="Castros de Coaña">
-      <img src="img/CastroCoaña2.jpg" alt="Paisaje de Castros de Coaña">
+      <img src="img/PalacioCastropol1.jpg" alt="Castros de Coaña">
+      <img src="img/PalacioCastropol2.jpg" alt="Paisaje de Castros de Coaña">
     </div>
     <p><br>
-      El Castro de Coaña destaca por su avanzado diseño urbano, con calles empedradas y sistemas de drenaje que evidencian un alto grado de organización social. Además, se han encontrado numerosos objetos de la vida cotidiana, como herramientas, cerámica y joyas, que proporcionan valiosa información sobre las costumbres y actividades de sus habitantes.
+    El Palacio del Marqués de Santa Cruz ha sido objeto de recientes restauraciones que han permitido recuperar su esplendor original y adaptarlo a nuevos usos. En la actualidad, el palacio alberga un espacio de vivienda vacacional de lujo, lo que permite a los visitantes disfrutar de su belleza arquitectónica y su entorno privilegiado.
+
+
 <br>
-      Hoy en día, el Castro de Coaña es un importante atractivo turístico y un centro de investigación arqueológica. Las visitas guiadas y el aula didáctica permiten a los visitantes comprender mejor la historia y el significado de este fascinante yacimiento.
-    </p>
-    <div class="text-center my-4">
-      <a href="Navia.php" class="btn btn-custom">Volver a Navia</a>
+El palacio se encuentra en un entorno natural privilegiado, con vistas a la ría del Eo, lo que añade un atractivo adicional a su valor histórico y arquitectónico. Su presencia en el paisaje de Castropol contribuye a la riqueza cultural y patrimonial de la región.    <div class="text-center my-4">
+      <a href="Castropol.php" class="btn btn-custom">Volver a Castropol</a>
     </div>
   </div>
   <!-- Footer -->
