@@ -382,7 +382,7 @@ El casco antiguo de Castropol conserva el encanto de su pasado, con casas de ind
                         <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Castropol.svg" alt="Escudo Castropol" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Vegadeo.svg" alt="Escudo Vegadeo" class="img-fluid m-2" style="max-height: 80px;">
-                        <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
+                        <img src="img/escudoTaramundi.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
                     </div>
                 </div>
 

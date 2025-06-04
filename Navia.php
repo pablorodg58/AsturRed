@@ -257,7 +257,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
     </nav>
 
     <div class="image-banner">
-        <img src="img/navia2.jpg" alt="Navia">
+        <img src="img/navia2 (2).jpeg" alt="Navia">
         <h2>Navia</h2>
     </div>
 
@@ -387,7 +387,7 @@ La historia de Navia está marcada por su tradición pesquera y su actividad com
                         <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Castropol.svg" alt="Escudo Castropol" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Vegadeo.svg" alt="Escudo Vegadeo" class="img-fluid m-2" style="max-height: 80px;">
-                        <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
+                        <img src="img/escudoTaramundi.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
                     </div>
                 </div>
 

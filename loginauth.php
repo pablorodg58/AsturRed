@@ -1,19 +1,34 @@
 <?php
 session_start();
-include "conexion.php";  // Asegúrate de que la conexión se cargue correctamente
+include "conexion.php";
+
+// Validar URL de redirección
+$redirect_url = 'index.php';
+if (isset($_POST['redirect_to'])) {
+    $temp_url = filter_var($_POST['redirect_to'], FILTER_SANITIZE_URL);
+    
+    // Validar que no sea una página sensible
+    $excluded_pages = ['loginform.php', 'loginauth.php', 'register.php', 'registerauth.php'];
+    $path = parse_url($temp_url, PHP_URL_PATH);
+    $filename = basename($path);
+    
+    if (!in_array($filename, $excluded_pages) && filter_var($temp_url, FILTER_VALIDATE_URL)) {
+        $redirect_url = $temp_url;
+    }
+}
 
 if (isset($_POST['btnLogin'])) {
     $txtUsername = trim($_POST['name']);
     $txtPassword = $_POST['password'];
 
-    // Verificar si el usuario es "admin"
+    // Verificar admin
     if ($txtUsername === "admin" && $txtPassword === "admin") {
         $_SESSION['admin_logged_in'] = true;
-        header("Location: dashboard.php");  // Redirigir al panel de administración
+        header("Location: dashboard.php");
         exit();
     }
 
-    // Consultar en la base de datos para usuarios turistas
+    // Buscar en usuarios turistas
     $stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
     $stmt->bind_param("s", $txtUsername);
     $stmt->execute();
@@ -23,13 +38,14 @@ if (isset($_POST['btnLogin'])) {
         $row = $result->fetch_assoc();
         if (password_verify($txtPassword, $row['password'])) {
             $_SESSION['username'] = $txtUsername;
-            header("Location: index.php");  // Redirigir al index después del login
+            $_SESSION['user_id'] = $row['id'];
+            header("Location: " . $redirect_url);
             exit();
         } else {
             $_SESSION['error_message'] = "❌ Contraseña incorrecta.";
         }
     } else {
-        // Si no es un usuario turista, verificar si es un negocio o ayuntamiento
+        // Buscar en negocios/ayuntamientos
         $stmt = $conn->prepare("SELECT * FROM businesses WHERE username = ?");
         $stmt->bind_param("s", $txtUsername);
         $stmt->execute();
@@ -39,8 +55,9 @@ if (isset($_POST['btnLogin'])) {
             $row = $result->fetch_assoc();
             if (password_verify($txtPassword, $row['password'])) {
                 $_SESSION['business_username'] = $txtUsername;
-                $_SESSION['role'] = $row['role']; // Guardar el rol (negocio o ayuntamiento)
-                header("Location: index.php");  // Redirigir al index después del login
+                $_SESSION['business_id'] = $row['id'];
+                $_SESSION['role'] = $row['role'];
+                header("Location: " . $redirect_url);
                 exit();
             } else {
                 $_SESSION['error_message'] = "❌ Contraseña incorrecta.";
@@ -52,9 +69,11 @@ if (isset($_POST['btnLogin'])) {
 
     $stmt->close();
     $conn->close();
-
-    // Redirigir de vuelta al formulario de inicio de sesión en caso de error
     header("Location: loginform.php");
     exit();
 }
+
+// Si alguien accede directamente al script
+header("Location: loginform.php");
+exit();
 ?>

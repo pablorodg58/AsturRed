@@ -1,33 +1,52 @@
 <?php
 session_start();
+include "conexion.php";
 
 if (isset($_POST['btnRegister'])) {
-    include "conexion.php"; 
+    $txtUsername = trim($_POST['name']);
+    $txtPassword = $_POST['password'];
+    $txtEmail = $_POST['email'] ?? null;
 
-    $txtUsername = $_POST['name'];  
-    $txtPassword = $_POST['password'];  
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE name = ?");
-    $stmt->bind_param("s", $txtUsername);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        echo "❌ El nombre de usuario ya está en uso. <a href='register.php'>Volver</a>";
+    // Validación
+    if (empty($txtUsername) || empty($txtPassword)) {
+        $_SESSION['error_message'] = "❌ Nombre de usuario y contraseña son obligatorios.";
+        header("Location: register.php");
         exit();
     }
 
-    $hashedPassword = password_hash($txtPassword, PASSWORD_DEFAULT);
+    // Verificar usuario existente
+    $checkUser = $conn->prepare("SELECT id FROM users WHERE name = ?");
+    $checkUser->bind_param("s", $txtUsername);
+    $checkUser->execute();
+    $checkUser->store_result();
 
-    $stmt = $conn->prepare("INSERT INTO users (name, password) VALUES (?, ?)");
-    $stmt->bind_param("ss", $txtUsername, $hashedPassword);
+    if ($checkUser->num_rows > 0) {
+        $_SESSION['error_message'] = "❌ El nombre de usuario ya está en uso.";
+        header("Location: register.php");
+        exit();
+    }
+    $checkUser->close();
+
+    // Registrar nuevo usuario
+    $hashedPassword = password_hash($txtPassword, PASSWORD_DEFAULT);
+    $insertUser = $conn->prepare("INSERT INTO users (name, password, email) VALUES (?, ?, ?)");
+    $insertUser->bind_param("sss", $txtUsername, $hashedPassword, $txtEmail);
     
-    if ($stmt->execute()) {
-        $_SESSION['admin'] = $txtUsername; 
-        header("Location: index.php");
+    if ($insertUser->execute()) {
+        $_SESSION['new_user'] = true;
+        $_SESSION['message'] = "✅ Registro exitoso. Por favor inicia sesión.";
+        header("Location: loginform.php");
         exit();
     } else {
-        echo "❌ Error al registrar el usuario.";
+        $_SESSION['error_message'] = "❌ Error al registrar: " . $conn->error;
+        header("Location: register.php");
+        exit();
     }
+    
+    $insertUser->close();
+    $conn->close();
+} else {
+    header("Location: register.php");
+    exit();
 }
 ?>

@@ -69,6 +69,14 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
             justify-content: center;
             margin-bottom: 20px;
         }
+        .pueblo-item a {
+            text-decoration: none; /* Elimina el subrayado de los enlaces */
+            color: inherit; /* Mantiene el color del texto heredado */
+        }
+
+        .pueblo-item a:hover {
+            text-decoration: none; /* Asegura que no aparezca subrayado al pasar el cursor */
+        }
         .pueblo-image {
             position: absolute;
             top: 0px; 

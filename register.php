@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION['username'])) {
+// Si ya está logueado, redirigir al index
+if (isset($_SESSION['username']) || isset($_SESSION['business_username']) || isset($_SESSION['admin_logged_in'])) {
     header("Location: index.php");
     exit();
 }
@@ -112,6 +113,14 @@ if (isset($_SESSION['username'])) {
     <div class="login-container">
         <img src="img/LogotipoMasTop-fotor-bg-remover-2024092820215 (1).png" alt="Logo" class="logo">
         <h2>Crear Cuenta</h2>
+        
+        <?php
+        if (isset($_SESSION['error_message'])) {
+            echo "<p class='error'>" . $_SESSION['error_message'] . "</p>";
+            unset($_SESSION['error_message']);
+        }
+        ?>
+        
         <p>Selecciona el tipo de cuenta que deseas crear:</p>
 
         <div class="type-container">

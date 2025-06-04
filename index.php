@@ -17,6 +17,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            padding-top: 56px; /* Añadido para compensar el navbar fijo */
         }
         .carousel-item img {
             width: 100%;
@@ -106,11 +107,148 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
         .event-card .btn-group {
             margin-top: 10px;
         }
+        /* Loading Spinner Styles */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+    }
+    
+    .spinner {
+        width: 70px;
+        height: 70px;
+        position: relative;
+    }
+    
+    .spinner .dot {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: #2e8b57;
+        border-radius: 50%;
+        animation: spin 1.2s linear infinite;
+    }
+    
+    .spinner .dot:nth-child(1) {
+        top: 0;
+        left: 29px;
+        animation-delay: 0s;
+    }
+    
+    .spinner .dot:nth-child(2) {
+        top: 6px;
+        left: 50px;
+        animation-delay: 0.1s;
+    }
+    
+    .spinner .dot:nth-child(3) {
+        top: 20px;
+        left: 58px;
+        animation-delay: 0.2s;
+    }
+    
+    .spinner .dot:nth-child(4) {
+        top: 38px;
+        left: 50px;
+        animation-delay: 0.3s;
+    }
+    
+    .spinner .dot:nth-child(5) {
+        top: 58px;
+        left: 29px;
+        animation-delay: 0.4s;
+    }
+    
+    .spinner .dot:nth-child(6) {
+        top: 50px;
+        left: 8px;
+        animation-delay: 0.5s;
+    }
+    
+    .spinner .dot:nth-child(7) {
+        top: 38px;
+        left: 0;
+        animation-delay: 0.6s;
+    }
+    
+    .spinner .dot:nth-child(8) {
+        top: 20px;
+        left: 6px;
+        animation-delay: 0.7s;
+    }
+    
+    @keyframes spin {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(0.3);
+            opacity: 0.5;
+        }
+    }
+    
+    .loading-text {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #2e8b57;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .loading-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    /* Estilos para el navbar fijo */
+    .navbar {
+        transition: all 0.3s ease;
+    }
+    
+    .navbar.fixed-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
     </style>
 </head>
 <body>
+    <!-- Loading Spinner -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-content">
+        <div class="spinner">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="loading-text">Cargando AsturRed...</div>
+    </div>
+</div>
     <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <!-- Logo en el navbar-brand -->
             <a class="navbar-brand" href="#">
@@ -367,7 +505,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
                         <img src="img/escudoNavia.png" alt="Escudo Taramundi" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Castropol.svg" alt="Escudo Castropol" class="img-fluid m-2" style="max-height: 80px;">
                         <img src="img/Escudo_de_Vegadeo.svg" alt="Escudo Vegadeo" class="img-fluid m-2" style="max-height: 80px;">
-                        <img src="img/escudoNavia.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
+                        <img src="img/escudoTaramundi.png" alt="Escudo Navia" class="img-fluid m-2" style="max-height: 80px;">
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
@@ -410,5 +548,45 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['admin_logged_in']) && !is
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Mostrar el spinner mientras la página se carga
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ocultar el spinner cuando todo esté cargado
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                loadingOverlay.classList.add('fade-out');
+                
+                // Eliminar el spinner después de la animación
+                setTimeout(function() {
+                    loadingOverlay.style.display = 'none';
+                }, 500); // Tiempo igual a la duración de la transición CSS
+            }, 300); // Pequeño retraso para asegurar que todo está listo
+        });
+        
+        // Ocultar el spinner si la carga tarda demasiado (fallback)
+        setTimeout(function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay.style.display !== 'none') {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(function() {
+                    loadingOverlay.style.display = 'none';
+                }, 500);
+            }
+        }, 5000); // 5 segundos como máximo
+    });
+    
+    // Script para hacer el navbar fijo al desplazarse
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('fixed-top');
+            document.body.style.paddingTop = navbar.offsetHeight + 'px';
+        } else {
+            navbar.classList.remove('fixed-top');
+            document.body.style.paddingTop = '0';
+        }
+    });
+    </script>
 </body>
 </html>
